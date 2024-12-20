@@ -14,6 +14,6 @@ module.exports = defineConfig({
       return config;
     },
     specPattern: "cypress/e2e/**/*.feature", // Define onde encontrar os arquivos .feature
-    baseUrl: "http://localhost:8080", // Substitua pelo URL base do seu site de testes, se necessário
+    //baseUrl: "http://localhost:8080", // Substitua pelo URL base do seu site de testes, se necessário
   },
 });
