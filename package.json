@@ -8,6 +8,8 @@
 
     "cypress": "^13.17.0",
 
+    "cypress-cucumber-preprocessor": "^4.3.1",
+
     "cypress-multi-reporters": "^2.0.4",
 
     "cypress-real-events": "^1.13.0",
