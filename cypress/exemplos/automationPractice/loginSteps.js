@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
 import { Given, When, Then, Before } from "cypress-cucumber-preprocessor/steps";
-import siteData from "../../utils/siteData";
+import siteData from "../../support/utils/siteData";
 
 Given("que estou na página de login do Automation Practice", () => {
     const { url, loginPath } = siteData.automationPractice;

@@ -16,9 +16,13 @@ When("insiro o email {string} e a senha {string}", (email, senha) => {
 });
 
 Then("devo ser autenticado com sucesso", () => {
-    cy.url().should("contain", "login-success");
+    cy.get('.logo.pull-left a img')
+        .should('have.attr', 'src', '/static/images/home/logo.png')
+        .and('have.attr', 'alt', 'Website for automation practice')
+        .should('be.visible');
 });
 
 Then("devo ver uma mensagem de erro", () => {
-    cy.get(".error-message").should("be.visible");
+    cy.get('.login-form > form > p')
+        .should('contain','Your email or password is incorrect!')
 });

@@ -7,5 +7,5 @@ Feature: Login no site Automation Exercise
 
   Scenario: Login com credenciais inválidas
     Given que estou na página de login do Automation Exercise
-    When insiro o email "email@invalido.com" e a senha "senhaerrada"
+    When insiro o email "email@invalido.com" e a senha "errata123"
     Then devo ver uma mensagem de erro
