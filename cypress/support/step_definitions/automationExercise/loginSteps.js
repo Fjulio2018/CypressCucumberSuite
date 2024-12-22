@@ -1,28 +1,20 @@
-/// <reference types="cypress"/>
+// cypress/support/step_definitions/automationExercise/loginSteps.js
 
-import { Given, When, Then, Before } from "cypress-cucumber-preprocessor/steps";
-import siteData from "../../utils/siteData";
+import LoginPage from '../../../pages/automationExercise/LoginPage';
 
-Given("que estou na página de login do Automation Exercise", () => {
-    const { url, loginPath } = siteData.automationExercise;
-    cy.visit(`${url}${loginPath}`);
+Given('que estou na página de login do Automation Exercise', () => {
+    LoginPage.visit();
 });
 
-When("insiro o email {string} e a senha {string}", (email, senha) => {
-    const { emailSelector, passwordSelector, submitSelector } = siteData.automationExercise;
-    cy.get(emailSelector).type(email);
-    cy.get(passwordSelector).type(senha);
-    cy.get(submitSelector).click();
+When('insiro o email {string} e a senha {string}', (email, password) => {
+LoginPage.login(email,password)
 });
 
-Then("devo ser autenticado com sucesso", () => {
-    cy.get('.logo.pull-left a img')
-        .should('have.attr', 'src', '/static/images/home/logo.png')
-        .and('have.attr', 'alt', 'Website for automation practice')
-        .should('be.visible');
+Then('devo ser autenticado com sucesso', () => {
+    LoginPage.validateLogo();
+    LoginPage.validaUsuarioLogado();
 });
 
-Then("devo ver uma mensagem de erro", () => {
-    cy.get('.login-form > form > p')
-        .should('contain','Your email or password is incorrect!')
+Then('devo ver uma mensagem de erro', () => {
+    LoginPage.validateErrorMessage();
 });
