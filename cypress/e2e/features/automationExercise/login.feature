@@ -9,7 +9,7 @@ Feature: Login no site Automation Exercise
 
   Scenario Outline: Validação de login com diferentes credenciais
     When insiro o email "<email>" e a senha "<password>"
-    Then <resultado>
+    Then "<resultado>"
 
     Examples:
       | email                  | password   | resultado                         |

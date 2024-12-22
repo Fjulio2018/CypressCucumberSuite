@@ -1,5 +1,3 @@
-// cypress/support/step_definitions/automationExercise/loginSteps.js
-
 import LoginPage from '../../../pages/automationExercise/LoginPage';
 
 Given('que estou na página de login do Automation Exercise', () => {
@@ -7,14 +5,17 @@ Given('que estou na página de login do Automation Exercise', () => {
 });
 
 When('insiro o email {string} e a senha {string}', (email, password) => {
-LoginPage.login(email,password)
+    LoginPage.fillEmail(email);
+    LoginPage.fillPassword(password);
+    LoginPage.submit();
 });
 
-Then('devo ser autenticado com sucesso', () => {
-    LoginPage.validateLogo();
-    LoginPage.validaUsuarioLogado();
-});
-
-Then('devo ver uma mensagem de erro', () => {
-    LoginPage.validateErrorMessage();
+Then('{string}', (resultado) => {
+    if (resultado === 'devo ser autenticado com sucesso') {
+        LoginPage.validateLogo();
+    } else if (resultado === 'devo ver uma mensagem de erro') {
+        LoginPage.validateErrorMessage();
+    } else {
+        throw new Error(`Resultado inesperado: ${resultado}`);
+    }
 });
