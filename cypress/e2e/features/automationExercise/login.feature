@@ -7,11 +7,13 @@ Feature: Login no site Automation Exercise
   Background:
     Given que estou na página de login do Automation Exercise
 
-  Scenario Outline: Validação de login com diferentes credenciais
-    When insiro o email "<email>" e a senha "<password>"
-    Then "<resultado>"
+  Scenario Outline: Validação de login com diferentes credenciais e métodos de navegação
+    When insiro o email "<email>" e a senha "<password>" usando "<método>"
+    Then "<resultado>" para o email "<email>"
 
     Examples:
-      | email                  | password   | resultado                         |
-      | teste2021@teste.com.br | teste      | devo ser autenticado com sucesso  |
-      | email@invalido.com     | senhaerrada| devo ver uma mensagem de erro     |
+      | email                   | password    | método          | resultado                        |
+      | testef2021@teste.com.br | @teste#123  | formulário       | devo ser autenticado com sucesso |
+      | email@invalido.com      | senhaerrada | formulário       | devo ver uma mensagem de erro    |
+      | testef2021@teste.com.br | @teste#123  | navegação teclado| devo ser autenticado com sucesso |
+      | email@invalido.com      | senhaerrada | navegação teclado| devo ver uma mensagem de erro    |

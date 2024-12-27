@@ -2,27 +2,22 @@
 
 class LoginPage {
 
-
     visit() {
         cy.visit('/login');
         this.validateLogo();
     }
 
-
     fillEmail(email) {
         cy.get('input[data-qa="login-email"]').type(email);
     }
-
 
     fillPassword(password) {
         cy.get('input[data-qa="login-password"]').type(password);
     }
 
-
     submit() {
         cy.get('button[data-qa="login-button"]').click();
     }
-
 
     validateLogo() {
         cy.get('.logo.pull-left a img')
@@ -31,25 +26,10 @@ class LoginPage {
             .should('be.visible');
     }
 
-
     validateErrorMessage() {
-
         cy.get('.login-form > form > p')
-            .should('contain.text', 'Your email or password is incorrect!')
+            .should('contain.text', 'Your email or password is incorrect!');
     }
-
-    validaUsuarioLogado(){
-
-        cy.contains('Logged in as teste plard')
-            .should('exist')
-            .and('be.visible')
-            .find('i.fa.fa-user')
-            .should('exist')
-            .and('be.visible');
-
-
-    }
-
 
     login(email, password) {
         this.visit();
@@ -57,6 +37,25 @@ class LoginPage {
         this.fillPassword(password);
         this.submit();
         this.validateLogo();
+    }
+
+    // Métodos para navegação por teclado usando cypress-real-events
+    fillEmailWithKeyboard(email) {
+        cy.get('input[data-qa="login-email"]')
+            .focus()
+            .realType(email) // usa realType ao invés de type()
+            .realPress('Tab');  // Navega para o campo de senha usando Tab
+    }
+
+    fillPasswordWithKeyboard(password) {
+        cy.get('input[data-qa="login-password"]')
+            .focus()  // Foca no campo de senha após o Tab
+            .realType(password);
+    }
+
+    submitWithKeyboard() {
+        cy.get('input[data-qa="login-password"]')  // Foca no campo de senha
+            .realPress('Enter');  // Submete o formulário com a tecla Enter
     }
 }
 
