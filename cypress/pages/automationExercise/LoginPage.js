@@ -39,23 +39,22 @@ class LoginPage {
         this.validateLogo();
     }
 
-    // Métodos para navegação por teclado usando cypress-real-events
-    fillEmailWithKeyboard(email) {
+    fillEmailUsingKeyboard(email) {
         cy.get('input[data-qa="login-email"]')
             .focus()
-            .realType(email) // usa realType ao invés de type()
-            .realPress('Tab');  // Navega para o campo de senha usando Tab
+            .realType(email)
+            .realPress('Tab');
     }
 
-    fillPasswordWithKeyboard(password) {
+    fillPasswordUsingKeyboard(password) {
         cy.get('input[data-qa="login-password"]')
-            .focus()  // Foca no campo de senha após o Tab
+            .focus()
             .realType(password);
     }
 
-    submitWithKeyboard() {
-        cy.get('input[data-qa="login-password"]')  // Foca no campo de senha
-            .realPress('Enter');  // Submete o formulário com a tecla Enter
+    submitUsingKeyboard() {
+        cy.get('input[data-qa="login-password"]')
+            .realPress('Enter');
     }
 }
 

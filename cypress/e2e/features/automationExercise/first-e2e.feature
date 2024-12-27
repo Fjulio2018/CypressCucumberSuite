@@ -11,7 +11,7 @@ Feature: Escolher produtos e selecionar forma de pagamento
 
     When pesquiso pelo produto "<produto>" com valor "<valor>"
     And adiciono o produto "<produto>" com valor "<valor>" ao carrinho
-    And valido os dados do procuto na tela de checkout
+    Then valido os dados do produtos "<produto>" com valor "<valor>" na tela de checkout
 
 
     Examples:

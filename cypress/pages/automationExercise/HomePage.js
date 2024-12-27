@@ -1,7 +1,7 @@
 // cypress/pages/automationExercise/HomePage.js
 
 class HomePage {
-    validaUsuarioLogado(email) {
+    validateLoggedUser(email) {
         if (!email) {
             throw new Error("Email is undefined");
         }
@@ -14,7 +14,7 @@ class HomePage {
             .and('be.visible');
     }
 
-    goToProducts() {
+    navigateToProducts() {
         cy.get('a[href="/products"]').click();
         cy.url().should('include', '/products');
         cy.contains('All Products')

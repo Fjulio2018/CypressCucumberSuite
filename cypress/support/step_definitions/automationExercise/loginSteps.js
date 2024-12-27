@@ -11,9 +11,9 @@ When('insiro o email {string} e a senha {string} usando {string}', (email, passw
         LoginPage.fillPassword(password);
         LoginPage.submit();
     } else if (metodo === 'navegação teclado') {
-        LoginPage.fillEmailWithKeyboard(email);
-        LoginPage.fillPasswordWithKeyboard(password);
-        LoginPage.submitWithKeyboard();
+        LoginPage.fillEmailUsingKeyboard(email);
+        LoginPage.fillPasswordUsingKeyboard(password);
+        LoginPage.submitUsingKeyboard();
     } else {
         throw new Error(`Método desconhecido: ${metodo}`);
     }
@@ -21,7 +21,7 @@ When('insiro o email {string} e a senha {string} usando {string}', (email, passw
 
 Then('{string} para o email {string}', (resultado, email) => {
     if (resultado === 'devo ser autenticado com sucesso') {
-        HomePage.validaUsuarioLogado(email);
+        HomePage.validateLoggedUser(email);
     } else if (resultado === 'devo ver uma mensagem de erro') {
         LoginPage.validateErrorMessage();
     } else {

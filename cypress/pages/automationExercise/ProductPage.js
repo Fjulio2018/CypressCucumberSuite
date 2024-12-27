@@ -1,4 +1,9 @@
+// cypress/pages/automationExercise/ProductPage.js
+
 class ProductPage {
+
+    productQuantity = 0;
+
     visit() {
         cy.visit('/products');
         this.validateProductPage();
@@ -26,7 +31,7 @@ class ProductPage {
             .first()
             .trigger('mouseover');
 
-        cy.get('.single-products .productinfo .add-to-cart', { timeout: 10000 })
+        cy.get('.single-products .productinfo .add-to-cart', { timeout: 5000 })
             .should('be.visible')
             .click();
 
@@ -36,8 +41,7 @@ class ProductPage {
     }
 
     validateProductInCart(productName, productPrice) {
-
-        cy.log('Preço produto', productPrice);
+        cy.log('Product Price', productPrice);
 
         cy.visit('/view_cart');
 
@@ -49,24 +53,22 @@ class ProductPage {
             .should('contain.text', 'Rs.', productPrice)
             .and('be.visible');
 
-
         cy.get('.cart_quantity')
             .should('be.visible')
             .invoke('text')
             .then((quantity) => {
-                quantity = parseInt(quantity, 10);
-                cy.log('Quantidade', quantity);
+                this.productQuantity = parseInt(quantity, 10);
+                cy.log('Quantity', this.productQuantity);
 
-                const numericProductPrice = parseFloat(productPrice.replace('Rs. ', ''));  // Converte o preço do produto para um número
-                cy.log('Preço do produto', numericProductPrice);
-                 const expectedTotal = quantity * numericProductPrice;
-                 cy.log('Valor esperado', expectedTotal.toFixed(2));
+                const numericProductPrice = parseFloat(productPrice.replace('Rs. ', ''));
+                cy.log('Product Price', numericProductPrice);
+
+                const expectedTotal = this.productQuantity * numericProductPrice;
+                cy.log('Expected Total', expectedTotal.toFixed(2));
 
                 cy.get('.cart_total_price')
-                    .should('contain.text',expectedTotal)
+                    .should('contain.text', expectedTotal);
             });
-
-
     }
 
     searchProduct(productName) {
@@ -85,6 +87,7 @@ class ProductPage {
 
     validateProductDetails(productName, productPrice) {
         cy.get('.single-products').within(() => {
+
             cy.get('img')
                 .should('have.attr', 'src')
                 .and('include', '/get_product_picture/');
@@ -101,11 +104,10 @@ class ProductPage {
         });
     }
 
-    gotoCheckout() {
+    navigateToCheckout() {
         cy.get('.col-sm-6 > .btn')
             .should('be.visible')
             .click();
-
     }
 }
 
