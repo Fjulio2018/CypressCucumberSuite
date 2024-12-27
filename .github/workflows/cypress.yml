@@ -25,7 +25,7 @@ jobs:
         run: chmod +x ./node_modules/.bin/mochawesome-merge || echo "Skipping chmod as mochawesome-merge not found"
 
       - name: Run Cypress Cucumber Tests
-        run: npx cypress run --headless --reporter mochawesome --reporter-options reportDir=cypress/reports,json=false --spec "cypress/e2e/**/*.feature"
+        run: npx cypress run --headless --reporter mochawesome --reporter-options reportDir=cypress/reports,json=true --spec "cypress/e2e/**/*.feature"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -39,5 +39,5 @@ jobs:
           path: |
             cypress/reports/*.json
             cypress/reports/*.html
-            cypress/screenshots
-            cypress/videos
+            cypress/screenshots/*
+            cypress/videos/*
