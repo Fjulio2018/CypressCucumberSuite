@@ -17,3 +17,5 @@ Feature: Login no site Automation Exercise
       | email@invalido.com      | senhaerrada | formulário       | devo ver uma mensagem de erro    |
       | testef2021@teste.com.br | @teste#123  | navegação teclado| devo ser autenticado com sucesso |
       | email@invalido.com      | senhaerrada | navegação teclado| devo ver uma mensagem de erro    |
+
+

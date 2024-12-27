@@ -1,33 +1,111 @@
 class ProductPage {
-
-
+    visit() {
+        cy.visit('/products');
+        this.validateProductPage();
+    }
 
     validateProductPage() {
-        cy.url().should('include', '/products');
-        cy.contains('All Products').should('exist').and('be.visible');
+        cy.get('img#sale_image')
+            .should('be.visible')
+            .and('have.attr', 'src', '/static/images/shop/sale.jpg')
+            .and('have.attr', 'alt', 'Website for practice');
+
+        cy.get('input#search_product')
+            .should('be.visible')
+            .and('have.attr', 'placeholder', 'Search Product');
+
+        cy.get('button#submit_search')
+            .should('be.visible')
+            .within(() => {
+                cy.get('i.fa.fa-search').should('exist');
+            });
     }
 
-    searchProduct(productName) {
-        cy.get('input[data-qa="search-product"]').type(productName);
-        cy.get('button[data-qa="search-button"]').click();
-    }
+    addToCart() {
+        cy.get('.single-products')
+            .first()
+            .trigger('mouseover');
 
-    validateSearchResults(productName) {
-        cy.contains(productName)
-            .should('exist')
+        cy.get('.single-products .productinfo .add-to-cart', { timeout: 10000 })
+            .should('be.visible')
+            .click();
+
+        cy.get('.modal-content')
+            .should('contain.text', 'Added!')
             .and('be.visible');
     }
 
-    addProductToCart(productName) {
-        cy.contains(productName)
-            .parent()
-            .find('button[data-qa="add-to-cart"]')
-            .click();
+    validateProductInCart(productName, productPrice) {
+
+        cy.log('Preço produto', productPrice);
+
+        cy.visit('/view_cart');
+
+        cy.get('.cart_description h4 a')
+            .should('contain.text', productName)
+            .and('be.visible');
+
+        cy.get('.cart_price')
+            .should('contain.text', 'Rs.', productPrice)
+            .and('be.visible');
+
+
+        cy.get('.cart_quantity')
+            .should('be.visible')
+            .invoke('text')
+            .then((quantity) => {
+                quantity = parseInt(quantity, 10);
+                cy.log('Quantidade', quantity);
+
+                const numericProductPrice = parseFloat(productPrice.replace('Rs. ', ''));  // Converte o preço do produto para um número
+                cy.log('Preço do produto', numericProductPrice);
+                 const expectedTotal = quantity * numericProductPrice;
+                 cy.log('Valor esperado', expectedTotal.toFixed(2));
+
+                cy.get('.cart_total_price')
+                    .should('contain.text',expectedTotal)
+            });
+
+
     }
 
-    validateProductInCart(productName) {
-        cy.get('a[href="/view_cart"]').click();
-        cy.contains(productName).should('exist').and('be.visible');
+    searchProduct(productName) {
+        cy.get('input[name="search"]')
+            .should('be.visible')
+            .type(productName);
+
+        cy.get('#submit_search > .fa')
+            .should('be.visible')
+            .click();
+
+        cy.contains('Searched Products')
+            .should('be.visible')
+            .and('contain.text', 'Searched Products');
+    }
+
+    validateProductDetails(productName, productPrice) {
+        cy.get('.single-products').within(() => {
+            cy.get('img')
+                .should('have.attr', 'src')
+                .and('include', '/get_product_picture/');
+
+            cy.contains('h2', productPrice)
+                .should('be.visible');
+
+            cy.contains('p', productName)
+                .should('be.visible');
+
+            cy.get('a.add-to-cart')
+                .should('have.attr', 'data-product-id')
+                .and('match', /^[0-9]+$/);
+        });
+    }
+
+    gotoCheckout() {
+        cy.get('.col-sm-6 > .btn')
+            .should('be.visible')
+            .click();
+
     }
 }
 
