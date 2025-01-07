@@ -27,19 +27,19 @@ Verificar a versão instalada: Após a instalação, você pode verificar se o N
 Verificar a versão do Node.js:
 
 bash
-Copiar código
+   ### Copiar código
 node -v
 Verificar a versão do npm:
 
 bash
-Copiar código
+### Copiar código
 npm -v
 
 ### Instalação
 Clone o Repositório (Se ainda não tiver clonado):
 
 bash
-Copiar código
+### Copiar código
 git clone https://github.com/Fjulio2018/CypressCucumberSuite.git
 cd CypressCucumberSuite
 
@@ -47,13 +47,13 @@ cd CypressCucumberSuite
 #### Instale as dependências do projeto:
 
 bash
-Copiar código
+### Copiar código
 npm install
 
 #### Estrutura do Projeto
 A estrutura do projeto é a seguinte:
 
-Copiar código
+
 cypress/
 ├── e2e/
 │   └── features/
@@ -70,9 +70,9 @@ cypress/
 #### Executando os Testes
 Abra o Cypress:
 bash
-Copiar código
+### Copiar código
 npx cypress open
 #### Para executar os testes em modo headless:
 bash
-Copiar código
+### Copiar código
 npx cypress run
