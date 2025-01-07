@@ -1,28 +1,19 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
 import 'cypress-real-events/support';
 import 'cypress-real-events';
+
+import HomePage from '../pages/automationExercise/HomePage';
+
+
+Cypress.Commands.add('saveLinksToFile', () => {
+    const dataToWrite = {
+        count: HomePage.links.length, // Conta o número de links encontrados
+        links: HomePage.links // Armazena os links encontrados
+    };
+
+    // Escreve o objeto no arquivo .json
+    cy.writeFile('cypress/fixtures/links.json', dataToWrite);
+    cy.log(`Links encontrados: ${HomePage.links.length}. Links salvos no arquivo links.json`);
+});
+
 
