@@ -1,17 +1,11 @@
-// cypress/pages/automationExercise/HomePage.js
-
 class HomePage {
 
     static links = [];
+    static totalLinks = [];
 
-
-    validateHomePage(){
-
-        cy.url()
-            .should('eq', 'https://www.automationexercise.com/')
-
+    validateHomePage() {
+        cy.url().should('eq', 'https://www.automationexercise.com/');
     }
-
 
     validateLoggedUser(email) {
         if (!email) {
@@ -34,15 +28,15 @@ class HomePage {
             .and('be.visible');
     }
 
-
-
     collectLinks() {
         this.links = [];
         let logoutLink = null;
+        this.totalLinks = [];
 
         cy.get('a[href]')
             .each(($el) => {
                 const href = Cypress.$($el).attr('href');
+                this.totalLinks.push(href);
                 if (href && !href.startsWith('javascript')) {
                     if (href === '/logout') {
                         logoutLink = href;
@@ -60,32 +54,57 @@ class HomePage {
     }
 
 
+    captureLinks() {
+        cy.get('a') // Seleciona todos os links da página
+            .each(($el) => {
+                const href = $el.attr('href'); // Pega o href de cada link
+                if (href) { // Verifica se o link tem o atributo href
+                    HomePage.links.push(href); // Adiciona o link à lista
+                }
+            }).then(() => {
+            cy.log(`Links coletados: ${HomePage.links.length}`);
+        });
+    }
 
 
+    saveLinksToFile() {
+        const dataToWrite = {
+            count: HomePage.links.length, // Conta o número de links encontrados
+            links: HomePage.links // Armazena os links encontrados
+        };
 
-
-
+        // Escreve o objeto no arquivo .json
+        cy.writeFile('cypress/fixtures/links.json', dataToWrite);
+        cy.log(`Links encontrados: ${HomePage.links.length}. Links salvos no arquivo links.json`);
+    }
 
     validateLinks() {
-
         if (!this.links || this.links.length === 0) {
             throw new Error('Nenhum link coletado para validar.');
         }
 
         cy.log('Validando os links coletados:', this.links);
 
-
         this.links.forEach((link) => {
             cy.request(link).then((response) => {
-
                 expect(response.status).to.eq(200);
-
-
                 cy.log(`Link validado: ${link} (Status: ${response.status})`);
             });
         });
     }
 
+    validateLinksFromFile() {
+        cy.readFile('cypress/fixtures/links.json').then((dataFromFile) => {
+
+            this.totalLinks.forEach((link) => {
+                expect(dataFromFile.links).to.include(link);
+            });
+
+
+            expect(dataFromFile.count).to.eq(this.totalLinks.length);
+            cy.log(`Validação concluída: ${dataFromFile.count} links comparados.`);
+        });
+    }
 }
 
 export default new HomePage();
