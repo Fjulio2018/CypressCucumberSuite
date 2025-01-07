@@ -4,6 +4,9 @@ import HomePage from '../../../pages/automationExercise/HomePage';
 Given('que estou na página de login do Automation Exercise', () => {
     LoginPage.visit();
 });
+Given('que estou logado no site com o email {string} e a senha {string}', (email, senha) => {
+    LoginPage.login(email,senha);
+});
 
 When('insiro o email {string} e a senha {string} usando {string}', (email, password, metodo) => {
     if (metodo === 'formulário') {

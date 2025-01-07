@@ -3,9 +3,7 @@ import ProductPage from '../../../pages/automationExercise/ProductPage';
 
 
 
-Given('que estou logado no site com o email {string} e a senha {string}', (email, senha) => {
-    LoginPage.login(email,senha);
-});
+
 
 
 Given('que estou na página de produtos do site', () => {
