@@ -23,7 +23,7 @@
             "name": "que estou na página de login do Automation Exercise",
             "result": {
               "status": "passed",
-              "duration": 2621000000
+              "duration": 2640000000
             }
           },
           {
@@ -33,7 +33,7 @@
             "name": "insiro o email \"testef2021@teste.com.br\" e a senha \"@teste#123\" usando \"formulário\"",
             "result": {
               "status": "passed",
-              "duration": 3523000000
+              "duration": 3732000000
             }
           },
           {
@@ -43,7 +43,7 @@
             "name": "\"devo ser autenticado com sucesso\" para o email \"testef2021@teste.com.br\"",
             "result": {
               "status": "passed",
-              "duration": 32000000
+              "duration": 31000000
             }
           }
         ]
@@ -63,7 +63,7 @@
             "name": "que estou na página de login do Automation Exercise",
             "result": {
               "status": "passed",
-              "duration": 757000000
+              "duration": 738000000
             }
           },
           {
@@ -73,7 +73,7 @@
             "name": "insiro o email \"email@invalido.com\" e a senha \"senhaerrada\" usando \"formulário\"",
             "result": {
               "status": "passed",
-              "duration": 1389000000
+              "duration": 1383000000
             }
           },
           {
@@ -83,7 +83,7 @@
             "name": "\"devo ver uma mensagem de erro\" para o email \"email@invalido.com\"",
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 4000000
             }
           }
         ]
@@ -103,7 +103,7 @@
             "name": "que estou na página de login do Automation Exercise",
             "result": {
               "status": "passed",
-              "duration": 1036000000
+              "duration": 1039000000
             }
           },
           {
@@ -113,7 +113,7 @@
             "name": "insiro o email \"testef2021@teste.com.br\" e a senha \"@teste#123\" usando \"navegação teclado\"",
             "result": {
               "status": "passed",
-              "duration": 4553000000
+              "duration": 4508000000
             }
           },
           {
@@ -123,7 +123,7 @@
             "name": "\"devo ser autenticado com sucesso\" para o email \"testef2021@teste.com.br\"",
             "result": {
               "status": "passed",
-              "duration": 36000000
+              "duration": 34000000
             }
           }
         ]
@@ -143,7 +143,7 @@
             "name": "que estou na página de login do Automation Exercise",
             "result": {
               "status": "passed",
-              "duration": 747000000
+              "duration": 1190000000
             }
           },
           {
@@ -153,7 +153,7 @@
             "name": "insiro o email \"email@invalido.com\" e a senha \"senhaerrada\" usando \"navegação teclado\"",
             "result": {
               "status": "passed",
-              "duration": 2710000000
+              "duration": 2483000000
             }
           },
           {
@@ -163,7 +163,7 @@
             "name": "\"devo ver uma mensagem de erro\" para o email \"email@invalido.com\"",
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 10000000
             }
           }
         ]

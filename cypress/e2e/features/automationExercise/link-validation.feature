@@ -8,7 +8,7 @@ Feature: Validação de todos os links da Home Page
   Background:
     Given que estou logado no site com o email "testef2021@teste.com.br" e a senha "@teste#123"
     And estou na Home Page
-  @ignore
+
   Scenario: Validação dos links da Home
     When eu percorro a lista de links na Home Page
     And clico em cada link

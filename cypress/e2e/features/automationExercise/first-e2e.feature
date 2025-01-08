@@ -9,7 +9,7 @@ Feature: Escolher produtos e validar o checkout
   Background:
     Given que estou logado no site com o email "testef2021@teste.com.br" e a senha "@teste#123"
     And que estou na página de produtos do site
-  @ignore
+
   Scenario Outline: Busca e validação produtos no cart e Checkout
 
     When pesquiso pelo produto "<produto>" com valor "<valor>"
