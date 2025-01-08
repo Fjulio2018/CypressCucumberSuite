@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "idMemberCreator": { "type": "string" },
+    "data": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "id": { "type": "string" }
+          },
+          "required": ["name", "id"]
+        },
+        "board": {
+          "type": "object",
+          "properties": {
+            "shortLink": { "type": "string" },
+            "name": { "type": "string" },
+            "id": { "type": "string" }
+          },
+          "required": ["shortLink", "name", "id"]
+        },
+        "card": {
+          "type": "object",
+          "properties": {
+            "shortLink": { "type": "string" },
+            "idShort": { "type": "number" },
+            "name": { "type": "string" },
+            "id": { "type": "string" },
+            "due": { "type": "string", "format": "date-time" }
+          },
+          "required": ["shortLink", "idShort", "name", "id", "due"]
+        },
+        "old": {
+          "type": "object",
+          "properties": {
+            "due": { "type": "string", "format": "date-time" }
+          },
+          "required": ["due"]
+        }
+      },
+      "required": ["list", "board", "card", "old"]
+    },
+    "type": { "type": "string" },
+    "date": { "type": "string", "format": "date-time" },
+    "memberCreator": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "fullName": { "type": "string" },
+        "initials": { "type": "string" },
+        "avatarUrl": { "type": "string" }
+      },
+      "required": ["id", "username", "fullName", "initials", "avatarUrl"]
+    }
+  },
+  "required": ["id", "idMemberCreator", "data", "type", "date", "memberCreator"]
+}

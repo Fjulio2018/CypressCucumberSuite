@@ -1,0 +1,33 @@
+{
+  "name": "CypressCucumberSuite",
+  "version": "1.0.0",
+  "description": "Suite de testes Cypress com Cucumber",
+  "scripts": {
+    "test": "cypress run",
+    "generate-html-report": "node cypress/support/cucumber-html-report.js"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^21.0.3",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
+    "cypress": "^13.17.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-multi-reporters": "^2.0.4",
+    "cypress-real-events": "^1.13.0",
+    "esbuild": "^0.24.2",
+    "multiple-cucumber-html-reporter": "^3.8.0",
+    "wdio-cucumberjs-json-reporter": "^6.0.1"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.3.0",
+    "axios": "^1.7.9"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/reports/cucumber-json/",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  }
+}

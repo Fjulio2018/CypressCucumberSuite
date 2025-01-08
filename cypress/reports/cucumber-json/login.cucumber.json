@@ -1,0 +1,173 @@
+[
+  {
+    "description": "  Como um cliente\n  Eu desejo fazer tentativas de login\n  para validar a aplicação",
+    "keyword": "Feature",
+    "name": "Login no site Automation Exercise",
+    "line": 1,
+    "id": "login-no-site-automation-exercise",
+    "tags": [],
+    "uri": "login.feature",
+    "elements": [
+      {
+        "id": "login-no-site-automation-exercise;validação-de-login-com-diferentes-credenciais-e-métodos-de-navegação",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Validação de login com diferentes credenciais e métodos de navegação",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "que estou na página de login do Automation Exercise",
+            "result": {
+              "status": "passed",
+              "duration": 2621000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "insiro o email \"testef2021@teste.com.br\" e a senha \"@teste#123\" usando \"formulário\"",
+            "result": {
+              "status": "passed",
+              "duration": 3523000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "\"devo ser autenticado com sucesso\" para o email \"testef2021@teste.com.br\"",
+            "result": {
+              "status": "passed",
+              "duration": 32000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "login-no-site-automation-exercise;validação-de-login-com-diferentes-credenciais-e-métodos-de-navegação",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "Validação de login com diferentes credenciais e métodos de navegação",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "que estou na página de login do Automation Exercise",
+            "result": {
+              "status": "passed",
+              "duration": 757000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "insiro o email \"email@invalido.com\" e a senha \"senhaerrada\" usando \"formulário\"",
+            "result": {
+              "status": "passed",
+              "duration": 1389000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "\"devo ver uma mensagem de erro\" para o email \"email@invalido.com\"",
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "login-no-site-automation-exercise;validação-de-login-com-diferentes-credenciais-e-métodos-de-navegação",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "Validação de login com diferentes credenciais e métodos de navegação",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "que estou na página de login do Automation Exercise",
+            "result": {
+              "status": "passed",
+              "duration": 1036000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "insiro o email \"testef2021@teste.com.br\" e a senha \"@teste#123\" usando \"navegação teclado\"",
+            "result": {
+              "status": "passed",
+              "duration": 4553000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "\"devo ser autenticado com sucesso\" para o email \"testef2021@teste.com.br\"",
+            "result": {
+              "status": "passed",
+              "duration": 36000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "login-no-site-automation-exercise;validação-de-login-com-diferentes-credenciais-e-métodos-de-navegação",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "Validação de login com diferentes credenciais e métodos de navegação",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "que estou na página de login do Automation Exercise",
+            "result": {
+              "status": "passed",
+              "duration": 747000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "insiro o email \"email@invalido.com\" e a senha \"senhaerrada\" usando \"navegação teclado\"",
+            "result": {
+              "status": "passed",
+              "duration": 2710000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "\"devo ver uma mensagem de erro\" para o email \"email@invalido.com\"",
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

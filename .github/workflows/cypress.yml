@@ -1,0 +1,43 @@
+name: Cypress Cucumber Tests
+
+on: [push]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Verify mochawesome-merge exists
+        run: ls -l ./node_modules/.bin/ || echo "mochawesome-merge not found"
+
+      - name: Grant permission to mochawesome-merge
+        run: chmod +x ./node_modules/.bin/mochawesome-merge || echo "Skipping chmod as mochawesome-merge not found"
+
+      - name: Run Cypress Cucumber Tests
+        run: npx cypress run --headless --reporter mochawesome --reporter-options reportDir=cypress/reports,json=true --spec "cypress/e2e/**/*.feature"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: List Cypress Reports
+        run: ls -l cypress/reports
+
+      - name: Upload Cypress Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-reports
+          path: |
+            cypress/reports/*.json
+            cypress/reports/*.html
+            cypress/screenshots/*
+            cypress/videos/*

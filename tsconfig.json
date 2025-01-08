@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "es2015"],
+    "types": ["cypress", "node"],
+    "esModuleInterop": true
+  },
+  "include": ["cypress/**/*.ts", "node_modules/@shelex/cypress-allure-plugin"]
+}
