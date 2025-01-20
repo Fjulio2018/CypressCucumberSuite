@@ -28,8 +28,8 @@ Verificar a versão do Node.js:
 
 bash
    ### Copiar código
-node -v
-Verificar a versão do npm:
+
+Verificar a versão do npm: node -v
 
 bash
 ### Copiar código
